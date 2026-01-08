@@ -1,7 +1,7 @@
 import { TFile } from "obsidian";
 
 export interface DataJson {
-	[path: string]: number;
+	[path: string]: any;
 }
 
 export interface HelperFunctions {

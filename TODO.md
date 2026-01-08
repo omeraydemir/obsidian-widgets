@@ -1,0 +1,4 @@
+- [ ] Countdown bileşenine +1 saat + 1 dakika + 1 saniye butonları eklenecek.
+- [ ] Stopwatch bileşenine +1 saat + 1 dakika + 1 saniye butonları eklenecek.
+- [ ] Stopwatch bileşeninin stilleri görünecek. Tamamlanma durumunda görünüm bozuk.
+- [ ] Bildirim özelliği eklenecek
