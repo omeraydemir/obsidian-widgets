@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { moment } from "obsidian";
+import React, { useEffect, useState, useRef } from "react";
+import { moment, Notice } from "obsidian";
 import { WidgetType } from "src/types/Widgets";
 import { Moment } from "moment";
 
 const Countdown = ({
-	settings: { date, to, completedLabel, show },
+	settings: { date, to, completedLabel, show, notify },
 }: CountdownProps) => {
 	const [countdown, setCountdown] = useState<CountdownState>({
 		years: 0,
@@ -14,6 +14,7 @@ const Countdown = ({
 		seconds: 0,
 	});
 	const [invalidDate, setInvalidDate] = useState<string | null>(null);
+	const notificationSent = useRef(false);
 
 	const showItems = show?.split(",").map((item) => item.trim()) || [];
 	const showState: CountdownShowState = {
@@ -67,7 +68,14 @@ const Countdown = ({
 			const diffInSeconds = endTime.diff(currentTime, "seconds");
 
 			if (diffInSeconds < 0) {
-				setInvalidDate(completedLabel || "Completed! 🎉");
+				const label = completedLabel || "Completed! 🎉";
+				setInvalidDate(label);
+
+				if (notify === "true" && !notificationSent.current) {
+					new Notice(label);
+					new Notification("TimeWidget", { body: label });
+					notificationSent.current = true;
+				}
 				return;
 			}
 
@@ -145,6 +153,7 @@ export interface CountdownSettings {
 	to: string;
 	completedLabel: string;
 	show?: string;
+	notify?: string;
 }
 
 interface CountdownProps {

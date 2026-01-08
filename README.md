@@ -51,6 +51,8 @@ format: "12hr" | "24hr"
 
 `completedLabel`: Text to show when `endTime` is reached. (optional)
 
+`notify`: Set to "true" to send a notification when the timer completes. (optional)
+
 `to`: Description text below the stopwatch. (optional)
 
 `show`: Comma-separated list of units to show (`days`, `hours`, `minutes`, `seconds`, `milliseconds`). Defaults to all. (optional)
@@ -62,6 +64,7 @@ format: "12hr" | "24hr"
 type: stopwatch
 to: Work Session
 show: hours, minutes, seconds
+notify: true
 ```
 ````
 
@@ -81,6 +84,8 @@ show: hours, minutes, seconds
 
 `completedLabel`: The label to show when the countdown is complete (optional)
 
+`notify`: Set to "true" to send a notification when the countdown completes. (optional)
+
 #### Example
 
 ````
@@ -89,6 +94,7 @@ type: countdown
 date: 2024-01-01 00:00:00
 to: New Year! 🎉
 completedLabel: Happy new year! 🎉
+notify: true
 ```
 ````
 

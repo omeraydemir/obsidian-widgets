@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { moment } from "obsidian";
+import { moment, Notice } from "obsidian";
 import { WidgetType } from "src/types/Widgets";
 import { DataJson, HelperFunctions } from "src/types/HelperFunctions";
 
@@ -12,6 +12,7 @@ const Stopwatch = ({
     const [time, setTime] = React.useState(0);
     const [isRunning, setIsRunning] = React.useState(false);
     const [isCompleted, setIsCompleted] = React.useState(false);
+    const notificationSent = React.useRef(false);
 
     // Persistence State
     const [persistedState, setPersistedState] = React.useState<StopwatchState>({
@@ -82,6 +83,14 @@ const Stopwatch = ({
             if (now.isAfter(end)) {
                 setIsCompleted(true);
                 diff = end.diff(start);
+
+                if (settings.notify === "true" && !notificationSent.current) {
+                    const label = settings.completedLabel || "Completed! 🎉";
+                    new Notice(label);
+                    new Notification("TimeWidget", { body: label });
+                    notificationSent.current = true;
+                }
+
             } else {
                 diff = now.diff(start);
             }
@@ -277,6 +286,7 @@ export interface StopwatchSettings {
     completedLabel?: string;
     to?: string;
     show?: string; // e.g. "days,hours,minutes"
+    notify?: string;
 }
 
 interface StopwatchProps {
