@@ -17,10 +17,10 @@ export class WidgetView extends ItemView {
 
 	widgetConfig: IWidgetConfigPersistedState = {
 		type: "clock",
-		author: "",
+
 		date: "",
 		format: "24hr",
-		quote: "",
+
 		text: "",
 		to: "",
 		isEditing: true,

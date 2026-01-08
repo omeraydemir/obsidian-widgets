@@ -11,10 +11,9 @@ export const ALL_WIDGETS = [
 			"```widgets\ntype: countdown\ndate: YYYY-MM-DD HH:MM:SS\nto:\n```\n",
 	},
 	{
-		title: "Quote",
-		slug: "quote",
-		markdown:
-			"```widgets\ntype: quote\nquote: Lorem ipsum dolor sit amet\nauthor: Lorem Ipsum\n```\n",
+		title: "Stopwatch",
+		slug: "stopwatch",
+		markdown: "```widgets\ntype: stopwatch\n```\n",
 	},
 	{
 		title: "Counter",

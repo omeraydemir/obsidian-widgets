@@ -1,7 +1,7 @@
 import React from "react";
 import { ALL_WIDGETS } from "../util/constants";
 import { IWidgetConfigPersistedState } from "src/WidgetView";
-import { QuoteSettings } from "src/Quote";
+
 import { CounterSettings } from "src/Counter";
 import { ClockSettings } from "src/Clock";
 import { CountdownSettings } from "src/Countdown";
@@ -32,42 +32,7 @@ const Config = ({ setState, state }: IConfigProps) => {
 				</select>
 			</div>
 
-			{state?.type === "quote" && (
-				<>
-					<div className="WidgetConfig__input-group">
-						<label>Quote</label>
-						<br />
-						<input
-							type="text"
-							value={(state as QuoteSettings).quote}
-							onChange={(ev) => {
-								const quote = ev.target.value;
 
-								setState({
-									...state,
-									quote,
-								});
-							}}
-						/>
-					</div>
-					<div className="WidgetConfig__input-group">
-						<label>Author</label>
-						<br />
-						<input
-							type="text"
-							value={(state as QuoteSettings).author}
-							onChange={(ev) => {
-								const author = ev.target.value;
-
-								setState({
-									...state,
-									author,
-								});
-							}}
-						/>
-					</div>
-				</>
-			)}
 
 			{state.type === "counter" && (
 				<div className="WidgetConfig__input-group">
