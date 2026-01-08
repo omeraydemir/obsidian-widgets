@@ -1,15 +1,15 @@
-![Obsidian Widgets](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json&query=%24.widgets.downloads&label=Total%20Plugin%20Downloads&color=%237c3aed)
+![TimeWidget](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json&query=%24.obsidian-timewidget.downloads&label=Total%20Plugin%20Downloads&color=%237c3aed)
 
-# Obsidian Widgets
+# TimeWidget
 
-Adds cool widgets within Obsidian notes
+Adds cool time management widgets within Obsidian notes
 
 ## Usage
 
-To insert a widget, simply add a code block with the language `widgets` and add your options to the body
+To insert a widget, simply add a code block with the language `timewidget` and add your options to the body
 
 ````
-```widgets
+```timewidget
 <OPTIONS>
 ```
 ````
@@ -31,31 +31,37 @@ Currently, the available widgets are:
 #### Example
 
 ````
-```widgets
+```timewidget
 type: clock
 format: "12hr" | "24hr"
 ```
 ````
 
-## Quote
+## Stopwatch
 
-![Quote](public/quote.png)
+![Stopwatch](public/stopwatch.png)
 
 #### Configuration Body:
 
-`type`: quote
+`type`: stopwatch
 
-`quote`: the quote you want to display
+`startTime`: Start date/time for a static timer (e.g., `2023-01-01 12:00`). (optional)
 
-`author`: the author of the quote (optional)
+`endTime`: End date/time for a static timer. (optional)
+
+`completedLabel`: Text to show when `endTime` is reached. (optional)
+
+`to`: Description text below the stopwatch. (optional)
+
+`show`: Comma-separated list of units to show (`days`, `hours`, `minutes`, `seconds`, `milliseconds`). Defaults to all. (optional)
 
 #### Example
 
 ````
-```widgets
-type: quote
-quote: Lorem ipsum dolor sit amet
-author: Lorem Ipsum
+```timewidget
+type: stopwatch
+to: Work Session
+show: hours, minutes, seconds
 ```
 ````
 
@@ -78,7 +84,7 @@ author: Lorem Ipsum
 #### Example
 
 ````
-```widgets
+```timewidget
 type: countdown
 date: 2024-01-01 00:00:00
 to: New Year! 🎉
@@ -109,7 +115,7 @@ The counter widget is supported multiple times by note if you provide an unique 
 #### Example
 
 ````
-```widgets
+```timewidget
 type: counter
 text: Push-ups
 id: push-ups
@@ -124,22 +130,22 @@ If you want to customize your widgets, please follow the [guide](STYLING.md)
 
 ## Widget View
 
-Obsidian Widgets comes with a command to add a Widget as a view to your workspace. This is useful if you want to have a widget always visible on your workspace. To use the command, open the Command Pallete (Ctrl + P) and select "Open widget view"
+TimeWidget comes with a command to add a Widget as a view to your workspace. This is useful if you want to have a widget always visible on your workspace. To use the command, open the Command Pallete (Ctrl + P) and select "Open widget view"
 
 ![Widget View](public/widget-view.png)
 
 ## Command Pallete
 
-Obsidian Widgets also comes with a handy command on the command pallete (Ctrl+P) to add widgets on the fly
+TimeWidget also comes with a handy command on the command pallete (Ctrl+P) to add widgets on the fly
 
 ![Command Pallete](public/command-pallete.png)
 
 ## Suggestions
 
--   [Widget requests, bugs, new feature requests](https://github.com/rafaelveiga/obsidian-widgets/issues)
+-   [Widget requests, bugs, new feature requests](https://github.com/omeraydemir/obsidian-timewidget/issues)
 
 ## Support
 
 If you find this plugin useful and would like to support its development, you can sponsor me on Ko-Fi
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z0SNIS3)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/omeraydemir)

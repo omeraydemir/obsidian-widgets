@@ -53,7 +53,7 @@ export default class ObsidianWidgets extends Plugin {
 		// The meat and the potatoes
 		// =====================
 		this.registerMarkdownCodeBlockProcessor(
-			"widgets",
+			"timewidget",
 			(source, el, ctx) => {
 				// @ts-ignore
 				const options = {} as WidgetSettings;
@@ -82,7 +82,7 @@ export default class ObsidianWidgets extends Plugin {
 		);
 	}
 
-	async onunload() {}
+	async onunload() { }
 
 	async activateView() {
 		const { workspace } = this.app;
