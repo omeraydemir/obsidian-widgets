@@ -57,6 +57,8 @@ format: "12hr" | "24hr"
 
 `show`: Comma-separated list of units to show (`days`, `hours`, `minutes`, `seconds`, `milliseconds`). Defaults to all. (optional)
 
+`controls`: Comma-separated list of buttons to show (`start`, `pause`, `reset`). Defaults to all. (optional)
+
 #### Example
 
 ````
@@ -64,6 +66,7 @@ format: "12hr" | "24hr"
 type: stopwatch
 to: Work Session
 show: hours, minutes, seconds
+controls: start, pause, reset
 notify: true
 ```
 ````

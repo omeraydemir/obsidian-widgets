@@ -112,6 +112,11 @@ export default class ObsidianWidgets extends Plugin {
 			writeToDataJson: this.writeToDataJson.bind(this),
 			readFromDataJson: this.readFromDataJson.bind(this),
 			getCurrentOpenFile: this.getCurrentOpenFile.bind(this),
+			modifyFile: this.modifyFile.bind(this),
 		};
+	}
+
+	async modifyFile(file: any, content: string): Promise<void> {
+		await this.app.vault.modify(file, content);
 	}
 }

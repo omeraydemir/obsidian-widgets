@@ -38,6 +38,14 @@ const Stopwatch = ({
     };
 
 
+    // Parse 'controls' setting
+    const controlItems = settings.controls?.split(",").map((item) => item.trim()) || null; // null implies show all by default
+    const showControls = {
+        start: controlItems ? controlItems.includes("start") : true,
+        pause: controlItems ? controlItems.includes("pause") : true,
+        reset: controlItems ? controlItems.includes("reset") : true,
+    };
+
     React.useEffect(() => {
         if (isStaticMode) {
             handleStaticMode();
@@ -215,6 +223,27 @@ const Stopwatch = ({
         );
     }
 
+
+
+    // Reverting thought process. I need to update HelperFunctions to include readFile.
+    // I will cancel this tool, add readFile, then come back.
+    // Wait, I can't cancel a tool in the middle of generation easily without error.
+    // I will just output the code that *would* work if readFile existed, but I'll comment it out or stub it?
+    // No, better to fail fast or do it right.
+    // I will update HelperFunctions in the NEXT step.
+    // So for this step, I will add the UI buttons and a stub handler.
+
+    // ... Actually, I can avoid reading if I use `app.vault.process`.
+    // But I don't have access to `app`.
+
+    // Okay, plan:
+    // 1. Add `readFile` to HelperFunctions (Task/Step 1)
+    // 2. Implement logic here (Task/Step 2)
+
+    // Since I must complete this tool call, I'll add the UI elements and the handler skeleton.
+
+
+
     return (
         <div className="Stopwatch_Container">
             <div className="Stopwatch_Display">
@@ -252,25 +281,32 @@ const Stopwatch = ({
 
             {!isStaticMode && (
                 <div className="Stopwatch_Controls">
-                    <button
-                        className="Stopwatch_Button"
-                        onClick={handleStart}
-                        disabled={isRunning}
-                    >
-                        Start
-                    </button>
-                    <button
-                        className="Stopwatch_Button"
-                        onClick={handleStop}
-                        disabled={!isRunning}
-                    >
-                        Pause
-                    </button>
-                    <button className="Stopwatch_Button" onClick={handleReset}>
-                        Reset
-                    </button>
+                    {showControls.start && (
+                        <button
+                            className="Stopwatch_Button"
+                            onClick={handleStart}
+                            disabled={isRunning}
+                        >
+                            Start
+                        </button>
+                    )}
+                    {showControls.pause && (
+                        <button
+                            className="Stopwatch_Button"
+                            onClick={handleStop}
+                            disabled={!isRunning}
+                        >
+                            Pause
+                        </button>
+                    )}
+                    {showControls.reset && (
+                        <button className="Stopwatch_Button" onClick={handleReset}>
+                            Reset
+                        </button>
+                    )}
                 </div>
             )}
+
             {settings.to && <div className="Stopwatch_To">{settings.to}</div>}
         </div>
     );
@@ -286,14 +322,18 @@ export interface StopwatchSettings {
     completedLabel?: string;
     to?: string;
     show?: string; // e.g. "days,hours,minutes"
+    controls?: string; // e.g. "start,pause,reset"
     notify?: string;
 }
+
+import { MarkdownPostProcessorContext } from "obsidian";
 
 interface StopwatchProps {
     settings: StopwatchSettings;
     helperFunctions: HelperFunctions;
     leafId: string;
 }
+
 
 interface StopwatchState {
     startTime: number | null;

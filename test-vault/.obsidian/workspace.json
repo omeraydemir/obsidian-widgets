@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "800746c89c7c3c49",
+        "id": "dd1043f7ab7bdb2e",
         "type": "tabs",
         "children": [
           {
-            "id": "7dacd75d4c651780",
+            "id": "348b3452b1f55fb2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Test.md",
+                "file": "Stopwatch Controls Test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test"
+              "title": "Stopwatch Controls Test"
             }
           }
         ]
@@ -185,9 +185,10 @@
       "obsidian-timewidget:Add widget": false
     }
   },
-  "active": "7dacd75d4c651780",
+  "active": "348b3452b1f55fb2",
   "lastOpenFiles": [
-    "Hoş geldiniz.md",
-    "Test.md"
+    "Stopwatch Controls Test.md",
+    "Test.md",
+    "Hoş geldiniz.md"
   ]
 }
