@@ -20,8 +20,8 @@ const Clock = ({ settings }: ClockProps) => {
 						? "hh:mm a"
 						: "hh:mm:ss a"
 					: hideSeconds
-					? "HH:mm"
-					: "HH:mm:ss";
+						? "HH:mm"
+						: "HH:mm:ss";
 
 			setAmPm(moment().format("A"));
 			setTime(moment().format(timeFormat));
